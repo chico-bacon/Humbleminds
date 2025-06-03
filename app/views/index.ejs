@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json" />
+    <title>Humbleminds</title>
+</head>
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+        try {
+            let registration = await navigator.serviceWorker.register('/service-worker.js')
+            console.log('Service Worker registered:', registration);
+        } catch(error) {
+            console.log('Service Worker registration failed:', error);
+        }
+    });
+}
+</script>
+<body>
+    <header>
+        <img src="/icons/logo-512.png" alt="logo da empresa">
+        <h1>Bem vindo a Humbleminds ReadingHub</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/login">Login</a>
+            <a href="">Acervo</a>
+            <a href="">Leituras</a>
+            <a href="">Sobre</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Novidades</h2>
+            <div>
+                <article>
+                    <h3>Titulo</h3>
+                    <img src="https://picsum.photos/150/200" alt="Capa do livro">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, quo veritatis aspernatur iure omnis obcaecati mollitia autem cupiditate sit ullam fugiat delectus pariatur iusto perspiciatis quos ab ratione aliquid aut?</p>
+                </article>
+                <article>
+                    <h3>Titulo</h3>
+                    <img src="https://picsum.photos/150/200" alt="Capa do livro">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, quo veritatis aspernatur iure omnis obcaecati mollitia autem cupiditate sit ullam fugiat delectus pariatur iusto perspiciatis quos ab ratione aliquid aut?</p>
+                </article>
+                <article>
+                    <h3>Titulo</h3>
+                    <img src="https://picsum.photos/150/200" alt="Capa do livro">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, quo veritatis aspernatur iure omnis obcaecati mollitia autem cupiditate sit ullam fugiat delectus pariatur iusto perspiciatis quos ab ratione aliquid aut?</p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy Todos os direitos resevados para Luiz Arthur
+    </footer>
+</body>
+</html>

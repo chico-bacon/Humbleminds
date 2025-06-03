@@ -1,0 +1,14 @@
+{
+  "name": "Humbleminds",
+  "theme_color": "#ff00ff",
+  "background_color": "#ffff00",
+  "display": "standalone",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icons/logo-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
