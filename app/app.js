@@ -46,6 +46,7 @@ import { LeitorController } from './controllers/LeitorController.js';
 import { LeitorRepository } from './models/LeitorORMRepository.js';
 import { LivroRepository } from './models/LivroORMRepository.js';
 import { LivroController } from './controllers/LivroControllers.js';
+import { dir } from 'console';
 
 const generoRepository = new GeneroRepository();
 const generoController = new GeneroController(generoRepository);
@@ -58,7 +59,7 @@ const livroController = new LivroController(livroRepository)
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
+app.use(express.static('C:\\Users\\4rthur\\Desktop\\WEBIII\\bibliotecaHumbleminds\\app\\public'));
 app.set('view engine', 'ejs')
 app.set('views', path.join('./app', 'views'));
 
@@ -93,6 +94,6 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => {
-    console.log('2')
+    console.log()
     console.log(`App listening on port: ${port}`)
 })

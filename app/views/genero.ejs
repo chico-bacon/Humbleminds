@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/scripts/GeneroStoreIndexedDB.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main id="app">    
+        <form @submit.prevent="inserir">
+            <h3>Generos</h3>
+            <label>
+                <span>Nome</span>
+                <input name="nome" type="text" id="nome">
+            </label>
+            <button>Enviar</button>
+        </form>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>nome</th>
+                <th>acoes</th>
+            </tr>
+            <tbody>
+                <tr v-for="genero in generos" :key="genero.id">
+                    <td class="id">{{ genero.id }}</td>
+                    <td class="nome">{{ genero.nome }}</td>
+                    <td>
+                        <button @click.prevent="apagar(genero.id)">Apagar</button>
+                        <button @click.prevent="alterar()">Alterar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+        const { createApp, ref } = Vue
+
+        const generoStore = new GeneroStoreIndexedDB();
+
+        createApp({
+            setup() {
+                const message = ref('Hello vue!')
+
+                //let nome = ref('')
+                let generos = ref([1, 2])
+
+                async function inserir() {
+                    console.log(`Inserindo ${nome.value}`)
+                    await generoStore.inserir({ nome: nome.value })
+
+                    listar();
+                }
+
+                async function listar() {
+                    generos.value = await generoStore.listar();
+                    
+                }
+
+                listar();
+
+                async function apagar(id) {
+                    await generoStore.apagar(id);
+
+                    listar();
+                }
+
+                async function alterar(id) {
+                    await generoStore.alterar(id);
+                }
+
+
+                return {
+                    message, inserir, generos, apagar
+                }
+
+            }
+        }).mount('#app')
+
+
+
+    </script>
+</body>
+</html>
