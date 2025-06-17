@@ -6,27 +6,6 @@ export class GeneroController {
         this.GenerosRepository = generosRepository
     }
 
-    getRouter() {
-        const rotas = express.Router();
-        rotas.get('/', (req, res) => {
-            this.listar(req, res);
-        });
-
-        rotas.post('/', (req, res, next) => {
-            this.inserir(req, res, next);
-        });
-
-        rotas.put('/', (req, res) => {
-            this.alterar(req, res);
-        });
-
-        rotas.delete('/', (req, res) => {
-            this.deletar(req, res);
-        });
-        
-        return rotas;
-    }
-
     async listar(req, res) {
         let generos = await this.GenerosRepository.listar();
         res.json(generos);

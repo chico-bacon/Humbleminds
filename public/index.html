@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducing Vue</title>
+</head>
+<body>
+    <!--
+    <div id="app">{{ message }}</div>
+    <script type="importmap">
+        {
+            "imports": {
+                "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+            }
+        }
+    </script>
+    <script type="module">
+        import { createApp } from 'vue'
+        import Titulo from 'meuComponente.js'
+
+        createApp(Titulo).mount('#app')
+    </script>
+    -->
+    <script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+  }
+    </script>
+
+    <div id="app">{{ contador }}</div>
+    <h1 v-bind:class=classe>Eu azul</h1>
+
+    <script type="module">
+        import { createApp } from 'vue'
+        import MyComponent from './my-component.js'
+        import Titulo from './titulo.js'
+        import Botao from './botaoAdicionar.js'
+        //createApp(MyComponent).mount('#app')
+        createApp(Botao).mount('#app')
+        createApp(MyComponent).mount('#app')
+        createApp(Botao).mount('#app')
+
+    </script>
+
+    <style>
+        .titulo {
+            color: blue;
+        }
+    </style>
+</body>
+</html>

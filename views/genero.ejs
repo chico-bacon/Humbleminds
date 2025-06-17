@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/scripts/GeneroStoreIndexedDB.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <main id="app">    
+        <form @submit.prevent="inserir">
+            <h3>Generos</h3>
+            <label>
+                <span>Nome</span>
+                <input name="nome" type="text" v-model="nome">
+            </label>
+            <button>Enviar</button>
+        </form>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>nome</th>
+                <th>acoes</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <script>
+        const { createApp, ref } = Vue
+
+        const generoStore = new GeneroStoreIndexedDB();
+
+        createApp({
+            setup() {
+                const message = ref('Hello vue!')
+
+                let nome = ref('')
+                let generos = ref([1, 2])
+
+                function inserir() {
+                    console.log(`Inserindo ${nome.value}`)
+                    generoStore.inserir({ nome: nome.value })
+                }
+
+                function listar() {
+                    
+                }
+
+                return {
+                    message, inserir, nome
+                }
+
+            }
+        }).mount('#app')
+
+
+
+    </script>
+</body>
+</html>
