@@ -1,8 +1,10 @@
 import express from 'express';
 const app = express();
-const port = 3000;
+const port = 3334;
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
+
+import path from 'path';
 
 var opts = {}
 import { Strategy, ExtractJwt} from 'passport-jwt';
@@ -58,24 +60,39 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs')
+app.set('views', path.join('./app', 'views'));
 
 app.get('/', (req, res) => {
+    console.log('2');
     res.render('index');
 })
+
+app.get('/admin/generos', )
 
 app.get('/login', (req, res) => {
     res.render('login');
 })
 
+app.get('/', (req, res) => {
+    res.render('index');
+})
+
+app.get('/admin/generos', (req, res) => {
+    res.render('genero');
+})
+
+
 app.use('/api/v1/leitores', leitorController.getRouter(), passport.authenticate('jwt', { session: false }));
 app.use('/api/v1/generos', generoController.getRouter());
 app.use('/api/v1/editoras', editoraController.getRouter());
 app.use('/api/v1/livros', livroController.getRouter());
+
 app.use((err, req, res, next) => {
     console.log({err});
     res.status(500).json(err.message);
 });
 
 app.listen(port, () => {
+    console.log('2')
     console.log(`App listening on port: ${port}`)
 })
