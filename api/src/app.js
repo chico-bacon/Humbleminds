@@ -4,20 +4,21 @@ import jwt from 'jsonwebtoken';
 
 const app = express();
 const port = 3000;
+const path = 'C:\\Users\\4rthur\\Desktop\\WEBIII\\bibliotecaHumbleminds\\client\\public'
 
 //const { generos } = require('./rotas/generos/')
 //const { editoras } = require('./rotas/editoras/')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
+app.use(express.static(path));
 app.set('view engine', 'ejs')
-app.use('/', router)
+app.use(router)
 
 app.get('/', (req, res) => {
     res.render('index');
-})
-
+});
+/*
 app.get('/admin/generos', (req, res) => {
     res.render('genero');
 })
@@ -25,6 +26,7 @@ app.get('/admin/generos', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('login');
 })
+*/
 
 app.use((err, req, res, next) => {
     console.log({err});

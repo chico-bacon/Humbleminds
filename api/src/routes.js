@@ -51,13 +51,21 @@ passport.use(new Strategy(opts, function(jwt_payload, done) {
 
 router.post('/api/v2/generos', (req, res, next) => generoController.inserir(req, res, next))
 router.get('/api/v2/generos', (req, res, next) => generoController.listar(req, res, next))
+router.get('/api/v2/generos/:id', (req, res, next) => generoController.buscarPorId(req, res, next))
+router.delete('/api/v2/generos/:id', (req, res, next) => generoController.deletar(req, res, next))
+router.put('/api/v2/generos/:id', (req, res, next) => generoController.alterar(req, res, next))
 
 router.post('/api/v2/editoras', (req, res, next) => editoraController.inserir(req, res, next))
 router.get('/api/v2/editoras', (req, res, next) => editoraController.listar(req, res, next))
-
+router.get('/api/v2/editoras/:id', (req, res, next) => editoraController.buscarPorId(req, res, next))
+router.delete('/api/v2/editoras/:id', (req, res, next) => editoraController.deletar(req, res, next))
+router.put('/api/v2/editoras/:id', (req, res, next) => editoraController.alterar(req, res, next))
 
 router.post('/api/v2/livros', (req, res, next) => livroController.inserir(req, res, next))
 router.get('/api/v2/livros', (req, res, next) => livroController.listar(req, res, next))
+router.get('/api/v2/livros/:id', (req, res, next) => livroController.buscarPorId(req, res, next))
+router.delete('/api/v2/livros/:id', (req, res, next) => livroController.deletar(req, res, next))
+router.put('/api/v2/livros/:id', (req, res, next) => livroController.alterar(req, res, next))
 
 router.post('/api/v2/leitores', (req, res, next) => leitorController.login(req, res, next), passport.authenticate('jwt', { session: false }))
 
